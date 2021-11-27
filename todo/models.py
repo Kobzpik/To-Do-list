@@ -10,6 +10,5 @@ class list(models.Model):
     def __str__(self):
         return self.item + ' | ' + str(self.completed) 
 
-    #def __str__(self):
-        #return self.item + ' | ' + str(self.completed)   
+   
         

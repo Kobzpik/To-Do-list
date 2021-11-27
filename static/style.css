@@ -43,3 +43,10 @@ nav.navbar .navbar-nav .nav-item .nav-link {
     background-color: rgb(131, 127, 129);
     padding-top: 10px;
 }
+
+
+/* depect cross item */
+
+#stric {
+    text-decoration: line-through;
+}
