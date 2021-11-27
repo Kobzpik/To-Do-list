@@ -1,21 +1,21 @@
 {% extends 'base.htm' %} {% block content %}
 <br>
 <br>
-<div class="contetn">
+<div class="content">
     <br>
     <br>
     <div class="row">
-        <div class="col">
+        <div class="col" id="add_form">
             <form class="form-inline my-2 m-lg-0" method="POST">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2" type="text" placeholder="add item" name="item">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add To List </button>
-
+                <input class="form-control-md mr-sm-2" type="text" placeholder="add item" name="item">
+                <button class="btn btn-info my-2 my-sm-0" type="submit">Add To List </button>
             </form>
         </div>
 
     </div>
 
+    <!--alert-->
     {% if messages%} {% for message in messages%}
     <div class="alert alert-warning alert-dismissable" role="alert">
         {{ message }}
@@ -30,7 +30,7 @@
         <!--if-->
         {% if things.completed %}
         <tr class="table-secondary">
-            <td>{{ things.item }}</td>
+            <td id="stric">{{ things.item }}</td>
             <td>
                 <center><a href="{% url 'uncross' things.id %}">Uncross</a></center>
             </td>
@@ -41,7 +41,7 @@
         {% else %}
 
         <tr class="table-secondary">
-            <td id="stric">{{ things.item }}</td>
+            <td>{{ things.item }}</td>
             <td>
                 <center><a href="{% url 'cross' things.id %}">cross </a></center>
             </td>

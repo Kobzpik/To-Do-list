@@ -45,7 +45,26 @@ nav.navbar .navbar-nav .nav-item .nav-link {
 }
 
 
-/* depect cross item */
+/* form */
+
+#add_form {
+    background-color: rgb(156, 211, 228);
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+
+/* form */
+
+.form-control-md {
+    width: 700px;
+    height: 35px;
+    margin-right: 4px;
+    box-shadow: 3px 3px 3px rgb(5, 5, 5);
+}
+
+
+/*cross item */
 
 #stric {
     text-decoration: line-through;
