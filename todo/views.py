@@ -4,16 +4,22 @@ from .models import list
 from .forms import listForm
 from django.contrib import messages
 
-# Create your views here.
-def home(request):
-    if request.method == 'POST':
-        form = listForm(request.POST or None)
 
+
+# Create your views here.
+
+def home(request): 
+    
+    
+    if request.method == 'POST':
+       
+        form = listForm(request.POST or None)
         if form.is_valid():
+            
             form.save()
             all_items = list.objects.all
             messages.success(request, ('Item has been added!') )
-            return render(request, 'index.htm', {'all_items' : all_items})
+            return render(request, 'index.htm', {'all_items' : all_items} )
 
     else:
         all_items = list.objects.all
@@ -39,4 +45,21 @@ def uncross(request, pk):
     item.completed = False
     item.save()
     return redirect('/')
+
+
+#edit task
+def edit(request ,pk):
+    if request.method == 'POST':
+        item = list.objects.get(id=pk)
+
+        form = listForm(request.POST or None , instance=item)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, ('Item has been Edited!'))
+            return redirect('/')
+    
+    else:
+        item = list.objects.get(id=pk)
+        return render(request , 'edit.htm', {'item' : item})
 

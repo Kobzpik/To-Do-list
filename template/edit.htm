@@ -1,0 +1,16 @@
+{% extends 'base.htm' %} {% block content %}
+<br>
+<br>
+<br>
+<br> {% if item %}
+<form class="form-inline my-2 m-lg-0" method="POST">
+    {% csrf_token %}
+    <input class="form-control-md mr-sm-2" type="text" placeholder="{{ item.item }}" name="item">
+
+    <input type="hidden" value="{{ item.completed }}" name=" completed ">
+
+
+    <button class="btn btn-info my-2 my-sm-0" type="submit">edit </button>
+</form>
+
+{% endif %} {% endblock content %}
