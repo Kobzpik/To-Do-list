@@ -10,5 +10,6 @@ urlpatterns = [
     path('uncross/<pk>', views.uncross, name='uncross'),
     path('edit/<pk>', views.edit, name='edit'),
     
+    
    
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
-from .models import list
+from .models import list1
 from .forms import listForm
 from django.contrib import messages
 
@@ -17,31 +17,32 @@ def home(request):
         if form.is_valid():
             
             form.save()
-            all_items = list.objects.all
+            all_items = list1.objects.all
             messages.success(request, ('Item has been added!') )
+            
             return render(request, 'index.htm', {'all_items' : all_items} )
 
     else:
-        all_items = list.objects.all
+        all_items = list1.objects.all
         return render(request, 'index.htm', {'all_items':all_items})
 
 #delete button funtion
 def delete(request, pk):
-    item = list.objects.get(id=pk)
+    item = list1.objects.get(id=pk)
     item.delete()
     messages.success(request, ('Item has been Deleted!'))
     return redirect('/')
 
 # cross off function
 def cross(request, pk):
-    item = list.objects.get(id=pk)
+    item = list1.objects.get(id=pk)
     item.completed = True
     item.save()
     return redirect('/')
 
 # uncross function
 def uncross(request, pk):
-    item = list.objects.get(id=pk)
+    item = list1.objects.get(id=pk)
     item.completed = False
     item.save()
     return redirect('/')
@@ -50,7 +51,7 @@ def uncross(request, pk):
 #edit task
 def edit(request ,pk):
     if request.method == 'POST':
-        item = list.objects.get(id=pk)
+        item = list1.objects.get(id=pk)
 
         form = listForm(request.POST or None , instance=item)
 
@@ -60,6 +61,7 @@ def edit(request ,pk):
             return redirect('/')
     
     else:
-        item = list.objects.get(id=pk)
+        item = list1.objects.get(id=pk)
         return render(request , 'edit.htm', {'item' : item})
+
 

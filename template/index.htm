@@ -8,12 +8,16 @@
         <div class="col" id="add_form">
             <form class="form-inline my-2 m-lg-0" method="POST">
                 {% csrf_token %}
+                <input class="form-control-sm mr-sm-2" type="text" placeholder="add date: yyyy-mm-dd" name="date">
                 <input class="form-control-md mr-sm-2" type="text" placeholder="add item" name="item">
+
                 <button class="btn btn-info my-2 my-sm-0" type="submit">Add To List </button>
             </form>
         </div>
 
     </div>
+
+
 
     <!--alert-->
     {% if messages%} {% for message in messages%}
@@ -22,14 +26,26 @@
     </div>
     {% endfor %} {% endif %}
 
+
     <!--another for-->
 
     {% if all_items %}
+
     <table class="table table-bordered">
+        <tr>
+            <th>Task</th>
+            <th>Task</th>
+            <th>Task</th>
+        </tr>
+
+
+
         {% for things in all_items reversed%}
         <!--if-->
         {% if things.completed %}
+
         <tr class="table-secondary">
+
             <td id="stric"><a href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
             <td>
                 <center><a href="{% url 'uncross' things.id %}">Uncross</a></center>
@@ -53,6 +69,8 @@
     </table>
     {% endif %}
     <br/>
+
+
 
 </div>
 {% endblock content %}
